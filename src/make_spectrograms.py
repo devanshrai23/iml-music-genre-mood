@@ -1,4 +1,11 @@
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+
 from pathlib import Path
+import warnings
+warnings.filterwarnings("ignore")
 import numpy as np
 import librosa
 from joblib import Parallel, delayed

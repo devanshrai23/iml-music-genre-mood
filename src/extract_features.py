@@ -1,4 +1,11 @@
+import os
+os.environ["OMP_NUM_THREADS"] = "1"
+os.environ["OPENBLAS_NUM_THREADS"] = "1"
+os.environ["VECLIB_MAXIMUM_THREADS"] = "1"
+
 from pathlib import Path
+import warnings
+warnings.filterwarnings("ignore")
 import numpy as np
 import pandas as pd
 import librosa
@@ -15,6 +22,19 @@ def summarize(name, arr, out):
         out[f"{name}{suffix}_mean"] = float(row.mean())
         out[f"{name}{suffix}_std"] = float(row.std())
 
+def estimate_tempo_safe(y, sr):
+    """Compute global tempo in BPM without triggering numba guvectorize segfaults."""
+    onset_env = librosa.onset.onset_strength(y=y, sr=sr)
+    # Autocorrelation of onset strength envelope
+    ac = librosa.autocorrelate(onset_env, max_size=4 * sr // 512)
+    freqs = librosa.tempo_frequencies(len(ac), sr=sr, hop_length=512)
+    # Restrict to plausible musical BPM range (40 to 240 BPM)
+    mask = (freqs >= 40.0) & (freqs <= 240.0)
+    if not np.any(mask):
+        return 120.0
+    best_idx = np.argmax(ac[mask])
+    return float(freqs[mask][best_idx])
+
 def extract(path):
     try:
         y, sr = librosa.load(path, sr=SR, mono=True)
@@ -27,8 +47,7 @@ def extract(path):
         summarize("spec_contrast", librosa.feature.spectral_contrast(y=y, sr=sr), f)
         summarize("zcr", librosa.feature.zero_crossing_rate(y), f)
         summarize("rms", librosa.feature.rms(y=y), f)
-        tempo, _ = librosa.beat.beat_track(y=y, sr=sr)
-        f["tempo"] = float(np.atleast_1d(tempo)[0])
+        f["tempo"] = estimate_tempo_safe(y, sr)
         return f
     except Exception as e:
         return {"filename": path.name, "error": str(e)}
