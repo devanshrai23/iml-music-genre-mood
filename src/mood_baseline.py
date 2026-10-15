@@ -1,3 +1,5 @@
+import warnings
+warnings.filterwarnings("ignore")
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
@@ -20,8 +22,6 @@ def derive_mood(r):
     return "tense" if r.energy >= 0.5 else "sad"
 
 df["mood"] = df.apply(derive_mood, axis=1)
-print("\nMood Class Distribution:")
-print(df["mood"].value_counts())
 
 feature_cols = [
     "danceability", "loudness", "tempo", "acousticness",
@@ -47,7 +47,6 @@ plt.savefig("reports/confusion_Mood_RF.png", dpi=150)
 plt.close()
 print("Saved -> reports/confusion_Mood_RF.png")
 
-# Compute SHAP on a 2,000-track stratified subsample for fast, exact explanation
 print("Computing SHAP feature importance for Mood prediction...")
 X_tr, X_sub, y_tr, y_sub = train_test_split(X, y, test_size=2000, stratify=y, random_state=42)
 clf.fit(X_tr, y_tr)
