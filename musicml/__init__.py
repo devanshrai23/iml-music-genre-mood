@@ -22,7 +22,7 @@ faulthandler.enable()
 # Load PyTorch's OpenMP runtime first (when installed) so librosa/numba reuse it.
 try:  # noqa: SIM105
     import torch  # noqa: F401
-except ImportError:
+except Exception:  # not installed, or a broken install: the non-torch parts still work
     pass
 
 from .config import GENRES, MOODS  # noqa: E402,F401

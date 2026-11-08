@@ -1,3 +1,15 @@
+"""2D CNN + temporal attention on full 30 s mel-spectrograms.
+
+Default run (no flags) reproduces the original experiment and additionally logs every
+epoch to reports/logs/cnn_history.csv.
+
+    python src/train_cnn.py                 # original protocol, best epoch picked on the test split
+    python src/train_cnn.py --val-frac 0.1  # clean protocol: pick best epoch on a validation split
+"""
+import argparse
+import csv
+import json
+import os
 import random
 from pathlib import Path
 import matplotlib
@@ -8,7 +20,13 @@ import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
 from sklearn.model_selection import train_test_split
+import torch.nn.functional as F
 from sklearn.metrics import accuracy_score, f1_score, classification_report, ConfusionMatrixDisplay
+
+parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+parser.add_argument("--val-frac", type=float, default=0.0,
+                    help="fraction of TRAIN clips held out to select the best epoch (0 = original: select on test)")
+args = parser.parse_args()
 
 # 1. Reproducibility & Apple Silicon GPU (MPS) Setup
 SEED = 42
@@ -33,6 +51,15 @@ print(f"Found {len(files)} cached Mel-spectrograms across {len(genres)} genres."
 train_files, test_files, y_tr, y_te = train_test_split(
     files, labels, test_size=0.2, stratify=labels, random_state=SEED
 )
+if args.val_frac > 0:
+    train_files, val_files, y_tr, y_val = train_test_split(
+        train_files, y_tr, test_size=args.val_frac, stratify=y_tr, random_state=SEED
+    )
+    sel_name = "validation"
+else:
+    val_files, y_val = test_files, y_te
+    sel_name = "test"
+print(f"Train: {len(train_files)} | Test: {len(test_files)} | Epoch selection on: {sel_name} ({len(val_files)})")
 
 class MelDataset(Dataset):
     def __init__(self, file_list, label_list, augment=False):
@@ -64,6 +91,8 @@ class MelDataset(Dataset):
 
 train_loader = DataLoader(MelDataset(train_files, y_tr, augment=True), batch_size=32, shuffle=True)
 test_loader = DataLoader(MelDataset(test_files, y_te, augment=False), batch_size=32, shuffle=False)
+val_loader = (DataLoader(MelDataset(val_files, y_val, augment=False), batch_size=32, shuffle=False)
+              if args.val_frac > 0 else test_loader)
 
 # 3. CNN with Temporal Attention Architecture
 class AudioAttentionCNN(nn.Module):
@@ -119,9 +148,29 @@ EPOCHS = 25
 best_acc = 0.0
 best_preds = []
 
+def evaluate(loader):
+    """Predictions, targets and mean cross-entropy loss on a loader."""
+    model.eval()
+    preds, trues, total = [], [], 0.0
+    with torch.no_grad():
+        for xb, yb in loader:
+            xb = xb.to(device)
+            logits, _ = model(xb)
+            total += F.cross_entropy(logits, yb.to(device), reduction="sum").item()
+            preds.extend(logits.argmax(dim=1).cpu().numpy())
+            trues.extend(yb.numpy())
+    return preds, trues, total / len(trues)
+
+
+os.makedirs("reports/logs", exist_ok=True)
+tag = "_val" if args.val_frac > 0 else ""
+history = []
+best_epoch = 0
+
 print(f"Training CNN with Temporal Attention for {EPOCHS} epochs...")
 for epoch in range(1, EPOCHS + 1):
     model.train()
+    train_loss, n_seen = 0.0, 0
     for xb, yb in train_loader:
         xb, yb = xb.to(device), yb.to(device)
         optimizer.zero_grad()
@@ -129,29 +178,43 @@ for epoch in range(1, EPOCHS + 1):
         loss = criterion(logits, yb)
         loss.backward()
         optimizer.step()
+        train_loss += loss.item() * xb.size(0)
+        n_seen += xb.size(0)
     scheduler.step()
+    train_loss /= n_seen
 
-    model.eval()
-    preds, trues = [], []
-    with torch.no_grad():
-        for xb, yb in test_loader:
-            xb = xb.to(device)
-            logits, _ = model(xb)
-            preds.extend(logits.argmax(dim=1).cpu().numpy())
-            trues.extend(yb.numpy())
-
+    preds, trues, eval_loss = evaluate(val_loader)
     acc = accuracy_score(trues, preds)
     if acc >= best_acc:
         best_acc = acc
         best_preds = preds
+        best_epoch = epoch
         torch.save(model.state_dict(), "reports/best_cnn_model.pt")
-    if epoch % 5 == 0 or epoch == EPOCHS:
-        print(f"Epoch {epoch:02d}/{EPOCHS} | Test Accuracy: {acc:.3f} (Best: {best_acc:.3f})")
+    history.append({"epoch": epoch, "train_loss": round(train_loss, 5), "eval_loss": round(eval_loss, 5),
+                    "eval_acc": round(acc, 5), "eval_split": sel_name})
+    print(f"Epoch {epoch:02d}/{EPOCHS} | Train loss: {train_loss:.4f} | {sel_name} loss: {eval_loss:.4f} | "
+          f"{sel_name} accuracy: {acc:.3f} (Best: {best_acc:.3f})")
 
-# 5. Final Evaluation & Plots
+with open(f"reports/logs/cnn_history{tag}.csv", "w", newline="") as fh:
+    w = csv.DictWriter(fh, fieldnames=list(history[0].keys()))
+    w.writeheader()
+    w.writerows(history)
+
+# 5. Final Evaluation & Plots (test split, using the selected checkpoint)
+if args.val_frac > 0:
+    model.load_state_dict(torch.load("reports/best_cnn_model.pt", map_location=device))
+    best_preds, _, _ = evaluate(test_loader)
+test_acc = accuracy_score(y_te, best_preds)
 macro_f1 = f1_score(y_te, best_preds, average="macro")
-print(f"\n=== Preliminary Attention-CNN | Best Test Accuracy = {best_acc:.3f} | Macro F1 = {macro_f1:.3f} ===")
+with open(f"reports/logs/cnn_summary{tag}.json", "w") as fh:
+    json.dump({"model": "cnn", "selection_split": sel_name, "best_epoch": best_epoch, "epochs": EPOCHS,
+               "params": sum(p.numel() for p in model.parameters()),
+               "test_acc": round(test_acc, 4), "test_macro_f1": round(macro_f1, 4)}, fh, indent=1)
+best_acc = test_acc
+print(f"\n=== Attention-CNN | Test Accuracy = {test_acc:.3f} | Macro F1 = {macro_f1:.3f} | "
+      f"best epoch {best_epoch} (picked on {sel_name}) ===")
 print(classification_report(y_te, best_preds, target_names=genres))
+print(f"Saved -> reports/logs/cnn_history{tag}.csv")
 
 ConfusionMatrixDisplay.from_predictions(y_te, best_preds, display_labels=genres, xticks_rotation=45)
 plt.title(f"Attention-CNN (Acc: {best_acc:.1%}, Macro F1: {macro_f1:.2f})")
