@@ -13,6 +13,10 @@ import numpy as np
 warnings.filterwarnings("ignore")
 import librosa  # noqa: E402
 
+from ._numba_safe import install as _install_numba_safe  # noqa: E402
+
+_install_numba_safe()   # avoids numba segfaults on Apple Silicon when torch is loaded
+
 from .config import CLIP_SECONDS, FIXED_FRAMES, HOP, N_MELS, NUM_SLICES, SLICE_LEN, SR
 
 MIN_SECONDS = 5.0
