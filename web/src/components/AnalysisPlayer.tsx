@@ -27,6 +27,7 @@ export default function AnalysisPlayer({ current, selectedSlice, onSelectSlice, 
             : <svg width="16" height="16" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor" /></svg>}
         </button>
         <span className="time">{fmt(audio.time)} / {fmt(dur)}</span>
+        {!audio.hasAudio && <span className="small muted">Audio isn't included in this online version. Click the spectrogram or slices to explore.</span>}
         {analysis.clip.offset > 0 && <span className="small muted">window starts at {fmt(analysis.clip.offset)} of {fmt(analysis.clip.total_duration ?? 0)}</span>}
         {!compact && (
           <div className="tabs" style={{ marginLeft: "auto" }} role="group" aria-label="Attention overlay">
