@@ -10,3 +10,8 @@ __pycache__/
 *.pt
 *.pt
 *.pt
+
+# Demo website: keep exported models (small) but not node/build output
+!models/*.pt
+web/node_modules/
+web/dist/
