@@ -73,6 +73,20 @@ An end-to-end Music Information Retrieval (MIR) pipeline for **audio genre class
 
 ---
 
+## Demo Website
+
+A React site with a FastAPI backend: upload a song, watch the CRNN's attention while it plays, compare all four genre models, read TreeSHAP explanations, and explore mood predictions.
+
+    pip install -r requirements.txt -r requirements-web.txt
+    python scripts/export_models.py        # trains anything missing, saves models/
+    python scripts/build_demo_samples.py   # pre-computed gallery for the site
+    cd web && npm install && npm run build && cd ..
+    python -m api                          # open http://127.0.0.1:8000
+
+Full guide, development mode and Vercel deployment: [docs/WEBSITE.md](docs/WEBSITE.md).
+
+---
+
 ## Project Structure
 
     iml-music-genre-mood/

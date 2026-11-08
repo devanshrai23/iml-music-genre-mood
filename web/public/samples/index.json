@@ -1,0 +1,182 @@
+[
+ {
+  "id": "blues.00086",
+  "title": "GTZAN blues.00086",
+  "label": "blues",
+  "tag": "rescue",
+  "crnn": "blues",
+  "rf": "reggae",
+  "audio": "samples/audio/blues.00086.mp3"
+ },
+ {
+  "id": "blues.00029",
+  "title": "GTZAN blues.00029",
+  "label": "blues",
+  "tag": "hit",
+  "crnn": "blues",
+  "rf": "blues",
+  "audio": "samples/audio/blues.00029.mp3"
+ },
+ {
+  "id": "classical.00046",
+  "title": "GTZAN classical.00046",
+  "label": "classical",
+  "tag": "rescue",
+  "crnn": "classical",
+  "rf": "rock",
+  "audio": "samples/audio/classical.00046.mp3"
+ },
+ {
+  "id": "classical.00047",
+  "title": "GTZAN classical.00047",
+  "label": "classical",
+  "tag": "hit",
+  "crnn": "classical",
+  "rf": "classical",
+  "audio": "samples/audio/classical.00047.mp3"
+ },
+ {
+  "id": "country.00067",
+  "title": "GTZAN country.00067",
+  "label": "country",
+  "tag": "rescue",
+  "crnn": "country",
+  "rf": "blues",
+  "audio": "samples/audio/country.00067.mp3"
+ },
+ {
+  "id": "country.00069",
+  "title": "GTZAN country.00069",
+  "label": "country",
+  "tag": "hit",
+  "crnn": "country",
+  "rf": "country",
+  "audio": "samples/audio/country.00069.mp3"
+ },
+ {
+  "id": "disco.00063",
+  "title": "GTZAN disco.00063",
+  "label": "disco",
+  "tag": "rescue",
+  "crnn": "disco",
+  "rf": "hiphop",
+  "audio": "samples/audio/disco.00063.mp3"
+ },
+ {
+  "id": "disco.00092",
+  "title": "GTZAN disco.00092",
+  "label": "disco",
+  "tag": "hit",
+  "crnn": "disco",
+  "rf": "disco",
+  "audio": "samples/audio/disco.00092.mp3"
+ },
+ {
+  "id": "hiphop.00012",
+  "title": "GTZAN hiphop.00012",
+  "label": "hiphop",
+  "tag": "rescue",
+  "crnn": "hiphop",
+  "rf": "blues",
+  "audio": "samples/audio/hiphop.00012.mp3"
+ },
+ {
+  "id": "hiphop.00082",
+  "title": "GTZAN hiphop.00082",
+  "label": "hiphop",
+  "tag": "hit",
+  "crnn": "hiphop",
+  "rf": "hiphop",
+  "audio": "samples/audio/hiphop.00082.mp3"
+ },
+ {
+  "id": "jazz.00006",
+  "title": "GTZAN jazz.00006",
+  "label": "jazz",
+  "tag": "rescue",
+  "crnn": "jazz",
+  "rf": "blues",
+  "audio": "samples/audio/jazz.00006.mp3"
+ },
+ {
+  "id": "jazz.00088",
+  "title": "GTZAN jazz.00088",
+  "label": "jazz",
+  "tag": "hit",
+  "crnn": "jazz",
+  "rf": "jazz",
+  "audio": "samples/audio/jazz.00088.mp3"
+ },
+ {
+  "id": "metal.00038",
+  "title": "GTZAN metal.00038",
+  "label": "metal",
+  "tag": "rescue",
+  "crnn": "metal",
+  "rf": "disco",
+  "audio": "samples/audio/metal.00038.mp3"
+ },
+ {
+  "id": "metal.00060",
+  "title": "GTZAN metal.00060",
+  "label": "metal",
+  "tag": "hit",
+  "crnn": "metal",
+  "rf": "metal",
+  "audio": "samples/audio/metal.00060.mp3"
+ },
+ {
+  "id": "pop.00017",
+  "title": "GTZAN pop.00017",
+  "label": "pop",
+  "tag": "rescue",
+  "crnn": "pop",
+  "rf": "disco",
+  "audio": "samples/audio/pop.00017.mp3"
+ },
+ {
+  "id": "pop.00084",
+  "title": "GTZAN pop.00084",
+  "label": "pop",
+  "tag": "hit",
+  "crnn": "pop",
+  "rf": "pop",
+  "audio": "samples/audio/pop.00084.mp3"
+ },
+ {
+  "id": "reggae.00079",
+  "title": "GTZAN reggae.00079",
+  "label": "reggae",
+  "tag": "rescue",
+  "crnn": "reggae",
+  "rf": "hiphop",
+  "audio": "samples/audio/reggae.00079.mp3"
+ },
+ {
+  "id": "reggae.00026",
+  "title": "GTZAN reggae.00026",
+  "label": "reggae",
+  "tag": "hit",
+  "crnn": "reggae",
+  "rf": "reggae",
+  "audio": "samples/audio/reggae.00026.mp3"
+ },
+ {
+  "id": "rock.00054",
+  "title": "GTZAN rock.00054",
+  "label": "rock",
+  "tag": "rescue",
+  "crnn": "rock",
+  "rf": "country",
+  "audio": "samples/audio/rock.00054.mp3"
+ },
+ {
+  "id": "rock.00095",
+  "title": "GTZAN rock.00095",
+  "label": "rock",
+  "tag": "hit",
+  "crnn": "rock",
+  "rf": "rock",
+  "audio": "samples/audio/rock.00095.mp3"
+ }
+]
