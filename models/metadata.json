@@ -1,0 +1,3914 @@
+{
+ "version": 1,
+ "genres": [
+  "blues",
+  "classical",
+  "country",
+  "disco",
+  "hiphop",
+  "jazz",
+  "metal",
+  "pop",
+  "reggae",
+  "rock"
+ ],
+ "feature_names": [
+  "mfcc_1_mean",
+  "mfcc_1_std",
+  "mfcc_2_mean",
+  "mfcc_2_std",
+  "mfcc_3_mean",
+  "mfcc_3_std",
+  "mfcc_4_mean",
+  "mfcc_4_std",
+  "mfcc_5_mean",
+  "mfcc_5_std",
+  "mfcc_6_mean",
+  "mfcc_6_std",
+  "mfcc_7_mean",
+  "mfcc_7_std",
+  "mfcc_8_mean",
+  "mfcc_8_std",
+  "mfcc_9_mean",
+  "mfcc_9_std",
+  "mfcc_10_mean",
+  "mfcc_10_std",
+  "mfcc_11_mean",
+  "mfcc_11_std",
+  "mfcc_12_mean",
+  "mfcc_12_std",
+  "mfcc_13_mean",
+  "mfcc_13_std",
+  "mfcc_14_mean",
+  "mfcc_14_std",
+  "mfcc_15_mean",
+  "mfcc_15_std",
+  "mfcc_16_mean",
+  "mfcc_16_std",
+  "mfcc_17_mean",
+  "mfcc_17_std",
+  "mfcc_18_mean",
+  "mfcc_18_std",
+  "mfcc_19_mean",
+  "mfcc_19_std",
+  "mfcc_20_mean",
+  "mfcc_20_std",
+  "chroma_1_mean",
+  "chroma_1_std",
+  "chroma_2_mean",
+  "chroma_2_std",
+  "chroma_3_mean",
+  "chroma_3_std",
+  "chroma_4_mean",
+  "chroma_4_std",
+  "chroma_5_mean",
+  "chroma_5_std",
+  "chroma_6_mean",
+  "chroma_6_std",
+  "chroma_7_mean",
+  "chroma_7_std",
+  "chroma_8_mean",
+  "chroma_8_std",
+  "chroma_9_mean",
+  "chroma_9_std",
+  "chroma_10_mean",
+  "chroma_10_std",
+  "chroma_11_mean",
+  "chroma_11_std",
+  "chroma_12_mean",
+  "chroma_12_std",
+  "spec_centroid_mean",
+  "spec_centroid_std",
+  "spec_bandwidth_mean",
+  "spec_bandwidth_std",
+  "spec_rolloff_mean",
+  "spec_rolloff_std",
+  "spec_contrast_1_mean",
+  "spec_contrast_1_std",
+  "spec_contrast_2_mean",
+  "spec_contrast_2_std",
+  "spec_contrast_3_mean",
+  "spec_contrast_3_std",
+  "spec_contrast_4_mean",
+  "spec_contrast_4_std",
+  "spec_contrast_5_mean",
+  "spec_contrast_5_std",
+  "spec_contrast_6_mean",
+  "spec_contrast_6_std",
+  "spec_contrast_7_mean",
+  "spec_contrast_7_std",
+  "zcr_mean",
+  "zcr_std",
+  "rms_mean",
+  "rms_std",
+  "tempo"
+ ],
+ "shap_global": {
+  "overall": [
+   {
+    "name": "spec_contrast_5_mean",
+    "value": 0.01092,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "spec_contrast_4_mean",
+    "value": 0.01048,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "mfcc_5_std",
+    "value": 0.00767,
+    "group": "Timbre (MFCC)"
+   },
+   {
+    "name": "rms_mean",
+    "value": 0.00761,
+    "group": "Loudness (RMS)"
+   },
+   {
+    "name": "spec_centroid_std",
+    "value": 0.00737,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "spec_bandwidth_mean",
+    "value": 0.00682,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "mfcc_1_mean",
+    "value": 0.0068,
+    "group": "Timbre (MFCC)"
+   },
+   {
+    "name": "rms_std",
+    "value": 0.00627,
+    "group": "Loudness (RMS)"
+   },
+   {
+    "name": "spec_contrast_3_mean",
+    "value": 0.00581,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "mfcc_4_mean",
+    "value": 0.00549,
+    "group": "Timbre (MFCC)"
+   },
+   {
+    "name": "spec_rolloff_mean",
+    "value": 0.00539,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "spec_contrast_5_std",
+    "value": 0.00511,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "spec_contrast_7_mean",
+    "value": 0.00499,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "spec_rolloff_std",
+    "value": 0.00447,
+    "group": "Spectral shape"
+   },
+   {
+    "name": "mfcc_9_mean",
+    "value": 0.00416,
+    "group": "Timbre (MFCC)"
+   },
+   {
+    "name": "mfcc_4_std",
+    "value": 0.00387,
+    "group": "Timbre (MFCC)"
+   },
+   {
+    "name": "zcr_std",
+    "value": 0.00379,
+    "group": "Noisiness (ZCR)"
+   },
+   {
+    "name": "mfcc_6_std",
+    "value": 0.00372,
+    "group": "Timbre (MFCC)"
+   },
+   {
+    "name": "chroma_2_mean",
+    "value": 0.00371,
+    "group": "Harmony (Chroma)"
+   },
+   {
+    "name": "spec_centroid_mean",
+    "value": 0.00368,
+    "group": "Spectral shape"
+   }
+  ],
+  "by_class": {
+   "blues": [
+    {
+     "name": "spec_contrast_7_mean",
+     "value": 0.01026
+    },
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.01023
+    },
+    {
+     "name": "spec_centroid_std",
+     "value": 0.00968
+    },
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.007
+    },
+    {
+     "name": "rms_mean",
+     "value": 0.00657
+    },
+    {
+     "name": "mfcc_4_mean",
+     "value": 0.00635
+    },
+    {
+     "name": "spec_bandwidth_mean",
+     "value": 0.00626
+    },
+    {
+     "name": "spec_centroid_mean",
+     "value": 0.00597
+    },
+    {
+     "name": "spec_rolloff_std",
+     "value": 0.00564
+    },
+    {
+     "name": "spec_rolloff_mean",
+     "value": 0.00532
+    }
+   ],
+   "classical": [
+    {
+     "name": "rms_mean",
+     "value": 0.02283
+    },
+    {
+     "name": "mfcc_1_mean",
+     "value": 0.01592
+    },
+    {
+     "name": "spec_bandwidth_mean",
+     "value": 0.01418
+    },
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.0127
+    },
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.01139
+    },
+    {
+     "name": "spec_rolloff_mean",
+     "value": 0.01065
+    },
+    {
+     "name": "spec_rolloff_std",
+     "value": 0.00973
+    },
+    {
+     "name": "spec_contrast_6_mean",
+     "value": 0.00937
+    },
+    {
+     "name": "spec_centroid_std",
+     "value": 0.00884
+    },
+    {
+     "name": "rms_std",
+     "value": 0.00549
+    }
+   ],
+   "country": [
+    {
+     "name": "spec_contrast_3_mean",
+     "value": 0.01198
+    },
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.01178
+    },
+    {
+     "name": "spec_contrast_1_mean",
+     "value": 0.01122
+    },
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.00994
+    },
+    {
+     "name": "mfcc_3_std",
+     "value": 0.00667
+    },
+    {
+     "name": "rms_mean",
+     "value": 0.00641
+    },
+    {
+     "name": "spec_centroid_std",
+     "value": 0.00637
+    },
+    {
+     "name": "rms_std",
+     "value": 0.00597
+    },
+    {
+     "name": "mfcc_1_mean",
+     "value": 0.0057
+    },
+    {
+     "name": "mfcc_5_std",
+     "value": 0.00534
+    }
+   ],
+   "disco": [
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.01013
+    },
+    {
+     "name": "spec_contrast_3_mean",
+     "value": 0.00926
+    },
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.00884
+    },
+    {
+     "name": "mfcc_5_std",
+     "value": 0.00854
+    },
+    {
+     "name": "mfcc_4_mean",
+     "value": 0.00691
+    },
+    {
+     "name": "spec_bandwidth_mean",
+     "value": 0.00662
+    },
+    {
+     "name": "mfcc_9_mean",
+     "value": 0.00647
+    },
+    {
+     "name": "mfcc_1_mean",
+     "value": 0.00642
+    },
+    {
+     "name": "zcr_mean",
+     "value": 0.00635
+    },
+    {
+     "name": "spec_rolloff_mean",
+     "value": 0.00602
+    }
+   ],
+   "hiphop": [
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.01862
+    },
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.01554
+    },
+    {
+     "name": "mfcc_5_std",
+     "value": 0.01354
+    },
+    {
+     "name": "rms_std",
+     "value": 0.01179
+    },
+    {
+     "name": "spec_centroid_std",
+     "value": 0.00816
+    },
+    {
+     "name": "mfcc_4_std",
+     "value": 0.00719
+    },
+    {
+     "name": "spec_contrast_3_mean",
+     "value": 0.00646
+    },
+    {
+     "name": "rms_mean",
+     "value": 0.00524
+    },
+    {
+     "name": "spec_rolloff_mean",
+     "value": 0.00511
+    },
+    {
+     "name": "spec_bandwidth_mean",
+     "value": 0.00511
+    }
+   ],
+   "jazz": [
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.01545
+    },
+    {
+     "name": "mfcc_5_std",
+     "value": 0.01027
+    },
+    {
+     "name": "mfcc_1_mean",
+     "value": 0.00901
+    },
+    {
+     "name": "mfcc_6_std",
+     "value": 0.00842
+    },
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.00826
+    },
+    {
+     "name": "rms_mean",
+     "value": 0.00782
+    },
+    {
+     "name": "mfcc_8_std",
+     "value": 0.00721
+    },
+    {
+     "name": "spec_contrast_4_std",
+     "value": 0.00714
+    },
+    {
+     "name": "spec_contrast_5_std",
+     "value": 0.00699
+    },
+    {
+     "name": "mfcc_7_std",
+     "value": 0.00672
+    }
+   ],
+   "metal": [
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.026
+    },
+    {
+     "name": "spec_contrast_5_std",
+     "value": 0.01826
+    },
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.01355
+    },
+    {
+     "name": "mfcc_4_mean",
+     "value": 0.0116
+    },
+    {
+     "name": "spec_contrast_3_mean",
+     "value": 0.00842
+    },
+    {
+     "name": "spec_contrast_7_mean",
+     "value": 0.00836
+    },
+    {
+     "name": "mfcc_13_mean",
+     "value": 0.00648
+    },
+    {
+     "name": "spec_rolloff_std",
+     "value": 0.00547
+    },
+    {
+     "name": "mfcc_1_std",
+     "value": 0.00506
+    },
+    {
+     "name": "zcr_mean",
+     "value": 0.0046
+    }
+   ],
+   "pop": [
+    {
+     "name": "spec_bandwidth_mean",
+     "value": 0.01637
+    },
+    {
+     "name": "mfcc_9_mean",
+     "value": 0.01533
+    },
+    {
+     "name": "spec_centroid_std",
+     "value": 0.01184
+    },
+    {
+     "name": "rms_std",
+     "value": 0.01126
+    },
+    {
+     "name": "mfcc_4_mean",
+     "value": 0.00959
+    },
+    {
+     "name": "rms_mean",
+     "value": 0.00957
+    },
+    {
+     "name": "spec_rolloff_mean",
+     "value": 0.00933
+    },
+    {
+     "name": "mfcc_1_mean",
+     "value": 0.00785
+    },
+    {
+     "name": "spec_contrast_7_mean",
+     "value": 0.00657
+    },
+    {
+     "name": "zcr_std",
+     "value": 0.00623
+    }
+   ],
+   "reggae": [
+    {
+     "name": "mfcc_5_std",
+     "value": 0.01581
+    },
+    {
+     "name": "mfcc_3_std",
+     "value": 0.00954
+    },
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.00866
+    },
+    {
+     "name": "spec_centroid_std",
+     "value": 0.00843
+    },
+    {
+     "name": "mfcc_7_std",
+     "value": 0.00792
+    },
+    {
+     "name": "mfcc_4_std",
+     "value": 0.0073
+    },
+    {
+     "name": "mfcc_1_mean",
+     "value": 0.00643
+    },
+    {
+     "name": "rms_mean",
+     "value": 0.00622
+    },
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.00605
+    },
+    {
+     "name": "chroma_2_mean",
+     "value": 0.00553
+    }
+   ],
+   "rock": [
+    {
+     "name": "spec_contrast_5_mean",
+     "value": 0.00785
+    },
+    {
+     "name": "mfcc_5_std",
+     "value": 0.00759
+    },
+    {
+     "name": "mfcc_8_std",
+     "value": 0.00566
+    },
+    {
+     "name": "rms_std",
+     "value": 0.00553
+    },
+    {
+     "name": "mfcc_1_mean",
+     "value": 0.00552
+    },
+    {
+     "name": "rms_mean",
+     "value": 0.00526
+    },
+    {
+     "name": "spec_contrast_4_mean",
+     "value": 0.00506
+    },
+    {
+     "name": "spec_contrast_6_std",
+     "value": 0.0045
+    },
+    {
+     "name": "spec_centroid_std",
+     "value": 0.00446
+    },
+    {
+     "name": "spec_bandwidth_mean",
+     "value": 0.00423
+    }
+   ]
+  }
+ },
+ "models": {
+  "rf": {
+   "accuracy": 0.72,
+   "macro_f1": 0.7172,
+   "per_class": {
+    "blues": {
+     "precision": 0.684,
+     "recall": 0.65,
+     "f1": 0.667
+    },
+    "classical": {
+     "precision": 0.947,
+     "recall": 0.9,
+     "f1": 0.923
+    },
+    "country": {
+     "precision": 0.652,
+     "recall": 0.75,
+     "f1": 0.698
+    },
+    "disco": {
+     "precision": 0.571,
+     "recall": 0.6,
+     "f1": 0.585
+    },
+    "hiphop": {
+     "precision": 0.652,
+     "recall": 0.75,
+     "f1": 0.698
+    },
+    "jazz": {
+     "precision": 0.818,
+     "recall": 0.9,
+     "f1": 0.857
+    },
+    "metal": {
+     "precision": 0.857,
+     "recall": 0.9,
+     "f1": 0.878
+    },
+    "pop": {
+     "precision": 0.882,
+     "recall": 0.75,
+     "f1": 0.811
+    },
+    "reggae": {
+     "precision": 0.571,
+     "recall": 0.6,
+     "f1": 0.585
+    },
+    "rock": {
+     "precision": 0.571,
+     "recall": 0.4,
+     "f1": 0.471
+    }
+   },
+   "confusion": [
+    [
+     13,
+     0,
+     3,
+     1,
+     0,
+     0,
+     0,
+     0,
+     3,
+     0
+    ],
+    [
+     0,
+     18,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     2,
+     0,
+     15,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1,
+     2
+    ],
+    [
+     0,
+     1,
+     1,
+     12,
+     4,
+     0,
+     0,
+     1,
+     1,
+     0
+    ],
+    [
+     1,
+     0,
+     0,
+     2,
+     15,
+     0,
+     1,
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     0,
+     0,
+     0,
+     0,
+     18,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     18,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     2,
+     1,
+     0,
+     1,
+     0,
+     15,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     3,
+     4,
+     0,
+     0,
+     0,
+     12,
+     1
+    ],
+    [
+     2,
+     0,
+     2,
+     1,
+     0,
+     2,
+     2,
+     1,
+     2,
+     8
+    ]
+   ]
+  },
+  "svm": {
+   "accuracy": 0.805,
+   "macro_f1": 0.8016,
+   "per_class": {
+    "blues": {
+     "precision": 0.85,
+     "recall": 0.85,
+     "f1": 0.85
+    },
+    "classical": {
+     "precision": 0.909,
+     "recall": 1.0,
+     "f1": 0.952
+    },
+    "country": {
+     "precision": 0.72,
+     "recall": 0.9,
+     "f1": 0.8
+    },
+    "disco": {
+     "precision": 0.8,
+     "recall": 0.6,
+     "f1": 0.686
+    },
+    "hiphop": {
+     "precision": 0.708,
+     "recall": 0.85,
+     "f1": 0.773
+    },
+    "jazz": {
+     "precision": 0.864,
+     "recall": 0.95,
+     "f1": 0.905
+    },
+    "metal": {
+     "precision": 0.895,
+     "recall": 0.85,
+     "f1": 0.872
+    },
+    "pop": {
+     "precision": 0.833,
+     "recall": 0.75,
+     "f1": 0.789
+    },
+    "reggae": {
+     "precision": 0.684,
+     "recall": 0.65,
+     "f1": 0.667
+    },
+    "rock": {
+     "precision": 0.812,
+     "recall": 0.65,
+     "f1": 0.722
+    }
+   },
+   "confusion": [
+    [
+     17,
+     0,
+     1,
+     1,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0
+    ],
+    [
+     0,
+     20,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     18,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2
+    ],
+    [
+     0,
+     0,
+     2,
+     12,
+     3,
+     1,
+     0,
+     1,
+     1,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1,
+     17,
+     0,
+     1,
+     0,
+     1,
+     0
+    ],
+    [
+     1,
+     0,
+     0,
+     0,
+     0,
+     19,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     17,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     1,
+     1,
+     0,
+     0,
+     1,
+     0,
+     15,
+     2,
+     0
+    ],
+    [
+     0,
+     1,
+     1,
+     1,
+     3,
+     0,
+     0,
+     1,
+     13,
+     0
+    ],
+    [
+     0,
+     0,
+     2,
+     0,
+     1,
+     1,
+     1,
+     1,
+     1,
+     13
+    ]
+   ]
+  },
+  "crnn": {
+   "accuracy": 0.87,
+   "macro_f1": 0.8687,
+   "per_class": {
+    "blues": {
+     "precision": 0.947,
+     "recall": 0.9,
+     "f1": 0.923
+    },
+    "classical": {
+     "precision": 0.952,
+     "recall": 1.0,
+     "f1": 0.976
+    },
+    "country": {
+     "precision": 0.857,
+     "recall": 0.9,
+     "f1": 0.878
+    },
+    "disco": {
+     "precision": 0.882,
+     "recall": 0.75,
+     "f1": 0.811
+    },
+    "hiphop": {
+     "precision": 0.792,
+     "recall": 0.95,
+     "f1": 0.864
+    },
+    "jazz": {
+     "precision": 0.909,
+     "recall": 1.0,
+     "f1": 0.952
+    },
+    "metal": {
+     "precision": 1.0,
+     "recall": 0.95,
+     "f1": 0.974
+    },
+    "pop": {
+     "precision": 0.727,
+     "recall": 0.8,
+     "f1": 0.762
+    },
+    "reggae": {
+     "precision": 0.882,
+     "recall": 0.75,
+     "f1": 0.811
+    },
+    "rock": {
+     "precision": 0.778,
+     "recall": 0.7,
+     "f1": 0.737
+    }
+   },
+   "confusion": [
+    [
+     18,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     20,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     1,
+     0,
+     18,
+     0,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0,
+     15,
+     1,
+     0,
+     0,
+     1,
+     1,
+     1
+    ],
+    [
+     0,
+     0,
+     0,
+     1,
+     19,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     20,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     19,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     1,
+     0,
+     0,
+     16,
+     1,
+     1
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     1,
+     2,
+     0,
+     1,
+     15,
+     0
+    ],
+    [
+     0,
+     0,
+     1,
+     0,
+     2,
+     0,
+     0,
+     3,
+     0,
+     14
+    ]
+   ]
+  },
+  "cnn": {
+   "accuracy": 0.83,
+   "macro_f1": 0.8265,
+   "per_class": {
+    "blues": {
+     "precision": 0.842,
+     "recall": 0.8,
+     "f1": 0.821
+    },
+    "classical": {
+     "precision": 0.952,
+     "recall": 1.0,
+     "f1": 0.976
+    },
+    "country": {
+     "precision": 0.696,
+     "recall": 0.8,
+     "f1": 0.744
+    },
+    "disco": {
+     "precision": 0.842,
+     "recall": 0.8,
+     "f1": 0.821
+    },
+    "hiphop": {
+     "precision": 0.857,
+     "recall": 0.9,
+     "f1": 0.878
+    },
+    "jazz": {
+     "precision": 0.826,
+     "recall": 0.95,
+     "f1": 0.884
+    },
+    "metal": {
+     "precision": 0.792,
+     "recall": 0.95,
+     "f1": 0.864
+    },
+    "pop": {
+     "precision": 0.85,
+     "recall": 0.85,
+     "f1": 0.85
+    },
+    "reggae": {
+     "precision": 1.0,
+     "recall": 0.75,
+     "f1": 0.857
+    },
+    "rock": {
+     "precision": 0.667,
+     "recall": 0.5,
+     "f1": 0.571
+    }
+   },
+   "confusion": [
+    [
+     16,
+     0,
+     1,
+     1,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     20,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     2,
+     0,
+     16,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     1,
+     16,
+     2,
+     0,
+     0,
+     1,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     1,
+     18,
+     0,
+     1,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     1,
+     0,
+     0,
+     0,
+     19,
+     0,
+     0,
+     0,
+     0
+    ],
+    [
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     19,
+     0,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     2,
+     0,
+     0,
+     0,
+     0,
+     17,
+     0,
+     1
+    ],
+    [
+     0,
+     0,
+     1,
+     1,
+     1,
+     0,
+     1,
+     0,
+     15,
+     1
+    ],
+    [
+     1,
+     0,
+     2,
+     0,
+     0,
+     2,
+     3,
+     2,
+     0,
+     10
+    ]
+   ]
+  }
+ },
+ "test_tracks": [
+  {
+   "file": "classical.00047.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "blues.00086.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "reggae",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "metal.00060.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "jazz.00088.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "blues.00090.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "reggae",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "country.00069.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "rock.00055.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "pop",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "country.00016.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "hiphop.00000.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "jazz.00023.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "blues.00029.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "blues.00021.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "reggae.00026.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "blues.00032.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "rock.00095.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "country",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "disco.00063.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "reggae.00015.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "jazz.00091.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "disco.00020.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "rock.00054.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "rock",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "country.00052.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "metal.00053.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "blues.00023.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "country.00031.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "blues.00097.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "classical.00036.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "pop.00084.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "reggae",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "reggae.00086.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "classical",
+    "crnn": "hiphop",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "jazz.00035.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "jazz.00073.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "metal.00012.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "country.00023.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "pop",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "jazz.00074.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "hiphop.00082.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "classical.00077.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "metal.00044.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "rock.00025.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "metal",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "hiphop.00008.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "country.00067.wav",
+   "label": "country",
+   "preds": {
+    "rf": "blues",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "disco.00092.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "reggae.00055.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "disco",
+    "crnn": "pop",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "rock.00069.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "country",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "pop.00099.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "blues.00087.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "country",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "jazz.00068.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "jazz.00020.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "metal.00057.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "classical.00040.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "hiphop.00022.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "pop.00017.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "disco",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "hiphop.00012.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "blues",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "metal.00038.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "disco",
+    "svm": "blues",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "hiphop.00092.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "jazz.00028.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "reggae.00054.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "disco.00037.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "disco.00003.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "classical.00034.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "classical.00071.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "reggae.00049.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "disco",
+    "svm": "pop",
+    "crnn": "jazz",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "metal.00018.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "reggae.00079.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "reggae.00024.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "rock.00005.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "disco.00053.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "disco",
+    "crnn": "rock",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "rock.00003.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "rock.00063.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "hiphop",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "classical.00011.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "rock.00092.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "rock",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "pop.00010.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "metal.00097.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "reggae.00066.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "classical.00022.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "pop.00058.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "reggae",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "reggae.00007.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "hiphop.00099.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "disco.00026.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "pop",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "pop.00054.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "pop.00088.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "pop.00096.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "disco.00087.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "pop.00032.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "reggae.00050.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "hiphop.00016.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "jazz.00033.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "rock.00058.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "pop",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "reggae.00074.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "hiphop.00062.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "rock.00051.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "jazz.00075.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "metal.00030.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "rock",
+    "svm": "metal",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "reggae.00003.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "metal.00098.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "disco.00018.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "country.00043.wav",
+   "label": "country",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "country",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "jazz.00085.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "jazz.00048.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "country.00010.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "reggae.00094.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "rock",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "reggae.00090.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "metal.00000.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "blues.00057.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "reggae.00022.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "disco",
+    "svm": "hiphop",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "pop.00005.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "country",
+    "svm": "pop",
+    "crnn": "rock",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "metal.00073.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "rock.00061.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "jazz",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "disco.00007.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "disco.00085.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "metal.00089.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "blues",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "disco.00068.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "blues.00095.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "country",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "blues.00001.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "classical.00099.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "country.00037.wav",
+   "label": "country",
+   "preds": {
+    "rf": "reggae",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "classical.00046.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "rock",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "country.00068.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "classical.00006.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "rock.00021.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "disco",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "reggae.00042.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "pop.00025.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "disco.00047.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "classical",
+    "svm": "jazz",
+    "crnn": "classical",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "blues.00059.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "jazz.00022.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "rock.00074.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "blues",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "reggae.00060.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "classical.00061.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "metal.00002.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "rock",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "hiphop.00057.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "metal.00094.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "disco.00097.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "metal.00066.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "hiphop.00011.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "disco",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "pop.00000.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "jazz.00089.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "pop.00095.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "country.00018.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "disco.00034.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "country",
+    "crnn": "disco",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "country.00072.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "disco.00027.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "reggae",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "reggae.00098.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "disco",
+    "svm": "reggae",
+    "crnn": "jazz",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "jazz.00090.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "blues.00075.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "rock",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "disco.00029.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "blues.00002.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "country",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "country.00015.wav",
+   "label": "country",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "blues",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "hiphop.00061.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "hiphop.00098.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "blues.00037.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "classical.00043.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "jazz",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "hiphop.00054.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "pop.00020.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "classical.00002.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "classical.00032.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "blues.00074.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "rock.00087.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "blues.00052.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "metal.00071.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "jazz.00058.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "classical.00004.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "blues.00063.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "disco.00021.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "disco.00060.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "hiphop.00039.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "jazz.00006.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "blues",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "reggae.00031.wav",
+   "label": "reggae",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "reggae",
+    "cnn": "reggae"
+   }
+  },
+  {
+   "file": "rock.00020.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "rock.00052.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "reggae",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "country.00074.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "pop.00062.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "jazz",
+    "svm": "jazz",
+    "crnn": "hiphop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "blues.00082.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "country",
+    "crnn": "disco",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "metal.00019.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "jazz.00009.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "jazz",
+    "svm": "blues",
+    "crnn": "jazz",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "blues.00020.wav",
+   "label": "blues",
+   "preds": {
+    "rf": "blues",
+    "svm": "blues",
+    "crnn": "blues",
+    "cnn": "blues"
+   }
+  },
+  {
+   "file": "rock.00032.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "pop.00026.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "classical.00064.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "pop.00064.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "classical",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "hiphop.00029.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "country.00055.wav",
+   "label": "country",
+   "preds": {
+    "rf": "blues",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "disco.00050.wav",
+   "label": "disco",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "disco",
+    "cnn": "disco"
+   }
+  },
+  {
+   "file": "metal.00090.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "hiphop.00051.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "rock.00023.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "blues",
+    "svm": "rock",
+    "crnn": "rock",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "hiphop.00018.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "classical.00072.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "pop.00048.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "metal.00095.wav",
+   "label": "metal",
+   "preds": {
+    "rf": "metal",
+    "svm": "metal",
+    "crnn": "metal",
+    "cnn": "metal"
+   }
+  },
+  {
+   "file": "country.00001.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "jazz.00064.wav",
+   "label": "jazz",
+   "preds": {
+    "rf": "rock",
+    "svm": "jazz",
+    "crnn": "jazz",
+    "cnn": "jazz"
+   }
+  },
+  {
+   "file": "country.00089.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "hiphop.00015.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "disco",
+    "svm": "disco",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "classical.00027.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "pop.00085.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "reggae",
+    "svm": "reggae",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "pop.00076.wav",
+   "label": "pop",
+   "preds": {
+    "rf": "pop",
+    "svm": "pop",
+    "crnn": "pop",
+    "cnn": "pop"
+   }
+  },
+  {
+   "file": "hiphop.00088.wav",
+   "label": "hiphop",
+   "preds": {
+    "rf": "hiphop",
+    "svm": "hiphop",
+    "crnn": "hiphop",
+    "cnn": "hiphop"
+   }
+  },
+  {
+   "file": "country.00093.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "country.00054.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  },
+  {
+   "file": "classical.00033.wav",
+   "label": "classical",
+   "preds": {
+    "rf": "classical",
+    "svm": "classical",
+    "crnn": "classical",
+    "cnn": "classical"
+   }
+  },
+  {
+   "file": "rock.00083.wav",
+   "label": "rock",
+   "preds": {
+    "rf": "rock",
+    "svm": "rock",
+    "crnn": "country",
+    "cnn": "rock"
+   }
+  },
+  {
+   "file": "country.00094.wav",
+   "label": "country",
+   "preds": {
+    "rf": "country",
+    "svm": "country",
+    "crnn": "country",
+    "cnn": "country"
+   }
+  }
+ ],
+ "mood": {
+  "classes": [
+   "calm",
+   "happy",
+   "sad",
+   "tense"
+  ],
+  "calibration": {
+   "calm": 1.45,
+   "happy": 1.0,
+   "sad": 1.0,
+   "tense": 1.0
+  },
+  "rows": 89741,
+  "raw": {
+   "accuracy": 0.6961,
+   "macro_f1": 0.6464,
+   "per_class": {
+    "calm": {
+     "precision": 0.591,
+     "recall": 0.329,
+     "f1": 0.423
+    },
+    "happy": {
+     "precision": 0.677,
+     "recall": 0.735,
+     "f1": 0.705
+    },
+    "sad": {
+     "precision": 0.738,
+     "recall": 0.801,
+     "f1": 0.768
+    },
+    "tense": {
+     "precision": 0.705,
+     "recall": 0.676,
+     "f1": 0.69
+    }
+   },
+   "confusion": [
+    [
+     479,
+     347,
+     586,
+     44
+    ],
+    [
+     124,
+     4885,
+     214,
+     1422
+    ],
+    [
+     185,
+     327,
+     3047,
+     247
+    ],
+    [
+     23,
+     1655,
+     280,
+     4084
+    ]
+   ]
+  },
+  "calibrated": {
+   "accuracy": 0.6963,
+   "macro_f1": 0.6629,
+   "per_class": {
+    "calm": {
+     "precision": 0.516,
+     "recall": 0.468,
+     "f1": 0.49
+    },
+    "happy": {
+     "precision": 0.684,
+     "recall": 0.725,
+     "f1": 0.704
+    },
+    "sad": {
+     "precision": 0.767,
+     "recall": 0.767,
+     "f1": 0.767
+    },
+    "tense": {
+     "precision": 0.705,
+     "recall": 0.675,
+     "f1": 0.69
+    }
+   },
+   "confusion": [
+    [
+     681,
+     281,
+     453,
+     41
+    ],
+    [
+     233,
+     4815,
+     176,
+     1421
+    ],
+    [
+     344,
+     298,
+     2920,
+     244
+    ],
+    [
+     63,
+     1641,
+     257,
+     4081
+    ]
+   ]
+  },
+  "features": {
+   "danceability": {
+    "min": 0.123,
+    "max": 0.904,
+    "median": 0.576
+   },
+   "loudness": {
+    "min": -28.542,
+    "max": -1.628,
+    "median": -7.185
+   },
+   "tempo": {
+    "min": 65.165,
+    "max": 193.651,
+    "median": 122.013
+   },
+   "acousticness": {
+    "min": 0.0,
+    "max": 0.992,
+    "median": 0.188
+   },
+   "instrumentalness": {
+    "min": 0.0,
+    "max": 0.958,
+    "median": 0.0
+   },
+   "speechiness": {
+    "min": 0.025,
+    "max": 0.619,
+    "median": 0.049
+   },
+   "liveness": {
+    "min": 0.041,
+    "max": 0.95,
+    "median": 0.132
+   },
+   "mode": {
+    "min": 0.0,
+    "max": 1.0,
+    "median": 1.0
+   },
+   "key": {
+    "min": 0.0,
+    "max": 11.0,
+    "median": 5.0
+   }
+  },
+  "shap_global": {
+   "calm": [
+    {
+     "name": "loudness",
+     "value": 0.03449
+    },
+    {
+     "name": "loudness_x_dance",
+     "value": 0.02539
+    },
+    {
+     "name": "acousticness",
+     "value": 0.02371
+    },
+    {
+     "name": "danceability",
+     "value": 0.02
+    },
+    {
+     "name": "speech_to_acoustic",
+     "value": 0.01738
+    },
+    {
+     "name": "acoustic_to_loudness",
+     "value": 0.01518
+    },
+    {
+     "name": "dance_x_tempo",
+     "value": 0.00996
+    },
+    {
+     "name": "instrumentalness",
+     "value": 0.00723
+    },
+    {
+     "name": "liveness",
+     "value": 0.00619
+    },
+    {
+     "name": "acoustic_x_inst",
+     "value": 0.00505
+    }
+   ],
+   "happy": [
+    {
+     "name": "danceability",
+     "value": 0.06919
+    },
+    {
+     "name": "loudness",
+     "value": 0.06886
+    },
+    {
+     "name": "dance_x_tempo",
+     "value": 0.03835
+    },
+    {
+     "name": "speech_to_acoustic",
+     "value": 0.03781
+    },
+    {
+     "name": "acousticness",
+     "value": 0.0302
+    },
+    {
+     "name": "liveness",
+     "value": 0.0285
+    },
+    {
+     "name": "instrumentalness",
+     "value": 0.02587
+    },
+    {
+     "name": "acoustic_x_inst",
+     "value": 0.01941
+    },
+    {
+     "name": "loudness_x_dance",
+     "value": 0.01844
+    },
+    {
+     "name": "acoustic_to_loudness",
+     "value": 0.0172
+    }
+   ],
+   "sad": [
+    {
+     "name": "loudness",
+     "value": 0.09102
+    },
+    {
+     "name": "speech_to_acoustic",
+     "value": 0.06261
+    },
+    {
+     "name": "acousticness",
+     "value": 0.04266
+    },
+    {
+     "name": "danceability",
+     "value": 0.03794
+    },
+    {
+     "name": "dance_x_tempo",
+     "value": 0.02368
+    },
+    {
+     "name": "acoustic_to_loudness",
+     "value": 0.02135
+    },
+    {
+     "name": "liveness",
+     "value": 0.01926
+    },
+    {
+     "name": "loudness_x_dance",
+     "value": 0.01752
+    },
+    {
+     "name": "speechiness",
+     "value": 0.01623
+    },
+    {
+     "name": "acoustic_x_inst",
+     "value": 0.01267
+    }
+   ],
+   "tense": [
+    {
+     "name": "loudness",
+     "value": 0.05778
+    },
+    {
+     "name": "danceability",
+     "value": 0.05218
+    },
+    {
+     "name": "speech_to_acoustic",
+     "value": 0.05016
+    },
+    {
+     "name": "acousticness",
+     "value": 0.04321
+    },
+    {
+     "name": "acoustic_to_loudness",
+     "value": 0.037
+    },
+    {
+     "name": "instrumentalness",
+     "value": 0.03081
+    },
+    {
+     "name": "loudness_x_dance",
+     "value": 0.03043
+    },
+    {
+     "name": "dance_x_tempo",
+     "value": 0.02558
+    },
+    {
+     "name": "acoustic_x_inst",
+     "value": 0.01588
+    },
+    {
+     "name": "liveness",
+     "value": 0.01552
+    }
+   ]
+  },
+  "presets": [
+   {
+    "title": "Memories",
+    "artist": "Maroon 5",
+    "genre": "pop",
+    "mood": "calm",
+    "valence": 0.595,
+    "energy": 0.327,
+    "features": {
+     "danceability": 0.775,
+     "loudness": -7.241,
+     "tempo": 91.05,
+     "acousticness": 0.841,
+     "instrumentalness": 0.0,
+     "speechiness": 0.0557,
+     "liveness": 0.0821,
+     "mode": 1.0,
+     "key": 11.0
+    }
+   },
+   {
+    "title": "Stand by Me",
+    "artist": "Ben E. King",
+    "genre": "r-n-b",
+    "mood": "calm",
+    "valence": 0.605,
+    "energy": 0.306,
+    "features": {
+     "danceability": 0.65,
+     "loudness": -9.443,
+     "tempo": 118.068,
+     "acousticness": 0.57,
+     "instrumentalness": 0.0,
+     "speechiness": 0.0393,
+     "liveness": 0.0707,
+     "mode": 1.0,
+     "key": 9.0
+    }
+   },
+   {
+    "title": "Show Me How",
+    "artist": "Men I Trust",
+    "genre": "indie-pop",
+    "mood": "calm",
+    "valence": 0.544,
+    "energy": 0.267,
+    "features": {
+     "danceability": 0.791,
+     "loudness": -11.997,
+     "tempo": 165.99,
+     "acousticness": 0.674,
+     "instrumentalness": 0.534,
+     "speechiness": 0.0415,
+     "liveness": 0.102,
+     "mode": 1.0,
+     "key": 5.0
+    }
+   },
+   {
+    "title": "As It Was",
+    "artist": "Harry Styles",
+    "genre": "pop",
+    "mood": "happy",
+    "valence": 0.662,
+    "energy": 0.731,
+    "features": {
+     "danceability": 0.52,
+     "loudness": -5.338,
+     "tempo": 173.93,
+     "acousticness": 0.342,
+     "instrumentalness": 0.001,
+     "speechiness": 0.0557,
+     "liveness": 0.311,
+     "mode": 0.0,
+     "key": 6.0
+    }
+   },
+   {
+    "title": "Te Felicito",
+    "artist": "Shakira;Rauw Alejandro",
+    "genre": "latin",
+    "mood": "happy",
+    "valence": 0.575,
+    "energy": 0.636,
+    "features": {
+     "danceability": 0.695,
+     "loudness": -4.654,
+     "tempo": 174.14,
+     "acousticness": 0.234,
+     "instrumentalness": 0.0,
+     "speechiness": 0.317,
+     "liveness": 0.081,
+     "mode": 1.0,
+     "key": 5.0
+    }
+   },
+   {
+    "title": "Watermelon Sugar",
+    "artist": "Harry Styles",
+    "genre": "pop",
+    "mood": "happy",
+    "valence": 0.557,
+    "energy": 0.816,
+    "features": {
+     "danceability": 0.548,
+     "loudness": -4.209,
+     "tempo": 95.39,
+     "acousticness": 0.122,
+     "instrumentalness": 0.0,
+     "speechiness": 0.0465,
+     "liveness": 0.335,
+     "mode": 1.0,
+     "key": 0.0
+    }
+   },
+   {
+    "title": "happier",
+    "artist": "Olivia Rodrigo",
+    "genre": "pop",
+    "mood": "sad",
+    "valence": 0.338,
+    "energy": 0.443,
+    "features": {
+     "danceability": 0.395,
+     "loudness": -9.72,
+     "tempo": 168.924,
+     "acousticness": 0.765,
+     "instrumentalness": 0.0,
+     "speechiness": 0.133,
+     "liveness": 0.0839,
+     "mode": 1.0,
+     "key": 6.0
+    }
+   },
+   {
+    "title": "everything i wanted",
+    "artist": "Billie Eilish",
+    "genre": "electro",
+    "mood": "sad",
+    "valence": 0.243,
+    "energy": 0.225,
+    "features": {
+     "danceability": 0.704,
+     "loudness": -14.454,
+     "tempo": 120.006,
+     "acousticness": 0.902,
+     "instrumentalness": 0.657,
+     "speechiness": 0.0994,
+     "liveness": 0.106,
+     "mode": 0.0,
+     "key": 6.0
+    }
+   },
+   {
+    "title": "Clean White Noise - Loopable with no fade",
+    "artist": "White Noise Baby Sleep;White Noise for Babies",
+    "genre": "sleep",
+    "mood": "sad",
+    "valence": 0.0,
+    "energy": 0.003,
+    "features": {
+     "danceability": 0.0,
+     "loudness": -28.46,
+     "tempo": 0.0,
+     "acousticness": 0.791,
+     "instrumentalness": 1.0,
+     "speechiness": 0.0,
+     "liveness": 0.111,
+     "mode": 1.0,
+     "key": 8.0
+    }
+   },
+   {
+    "title": "Sex, Drugs, Etc.",
+    "artist": "Beach Weather",
+    "genre": "rock",
+    "mood": "tense",
+    "valence": 0.465,
+    "energy": 0.839,
+    "features": {
+     "danceability": 0.572,
+     "loudness": -5.083,
+     "tempo": 143.969,
+     "acousticness": 0.013,
+     "instrumentalness": 0.0098,
+     "speechiness": 0.0377,
+     "liveness": 0.522,
+     "mode": 0.0,
+     "key": 4.0
+    }
+   },
+   {
+    "title": "GAT\u00daBELA",
+    "artist": "KAROL G;Maldy",
+    "genre": "reggae",
+    "mood": "tense",
+    "valence": 0.342,
+    "energy": 0.858,
+    "features": {
+     "danceability": 0.627,
+     "loudness": -2.824,
+     "tempo": 92.523,
+     "acousticness": 0.263,
+     "instrumentalness": 0.0,
+     "speechiness": 0.386,
+     "liveness": 0.21,
+     "mode": 0.0,
+     "key": 11.0
+    }
+   },
+   {
+    "title": "I Was Never There",
+    "artist": "The Weeknd;Gesaffelstein",
+    "genre": "pop",
+    "mood": "tense",
+    "valence": 0.155,
+    "energy": 0.737,
+    "features": {
+     "danceability": 0.323,
+     "loudness": -4.008,
+     "tempo": 113.26,
+     "acousticness": 0.142,
+     "instrumentalness": 0.0002,
+     "speechiness": 0.0338,
+     "liveness": 0.163,
+     "mode": 1.0,
+     "key": 10.0
+    }
+   }
+  ]
+ }
+}
