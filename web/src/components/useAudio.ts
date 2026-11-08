@@ -6,9 +6,10 @@ export function useAudio(src: string | null, offset: number, duration: number) {
   const [time, setTime] = useState(0);
   const [playing, setPlaying] = useState(false);
   const [ready, setReady] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
-    setTime(0); setPlaying(false); setReady(false);
+    setTime(0); setPlaying(false); setReady(false); setFailed(false);
     if (!src) { ref.current = null; return; }
     const a = new Audio(src);
     a.preload = "auto";
@@ -27,7 +28,9 @@ export function useAudio(src: string | null, offset: number, duration: number) {
     a.addEventListener("pause", onPause);
     a.addEventListener("ended", onPause);
     a.addEventListener("loadedmetadata", onReady);
-    return () => { cancelAnimationFrame(raf); a.pause(); a.src = ""; };
+    const onError = () => { if (a.src) setFailed(true); };
+    a.addEventListener("error", onError);
+    return () => { cancelAnimationFrame(raf); a.removeEventListener("error", onError); a.pause(); a.src = ""; };
   }, [src, offset, duration]);
 
   const seek = (t: number) => {
@@ -42,5 +45,5 @@ export function useAudio(src: string | null, offset: number, duration: number) {
     if (a.paused) { if (a.currentTime < offset || a.currentTime > offset + duration) a.currentTime = offset; a.play().catch(() => undefined); }
     else a.pause();
   };
-  return { time, playing, ready: ready && !!src, seek, toggle, hasAudio: !!src };
+  return { time, playing, ready: ready && !!src, seek, toggle, hasAudio: !!src && !failed };
 }
