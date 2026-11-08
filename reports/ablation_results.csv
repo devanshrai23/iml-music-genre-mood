@@ -1,0 +1,6 @@
+config,params,test_song_acc,test_slice_acc,test_macro_f1,best_epoch,selection_split
+full,1017290,0.87,0.813,0.8687,25,test
+no_attention,984266,0.865,0.8,0.8668,19,test
+no_gru,490186,0.87,0.8105,0.8703,28,test
+no_specaugment,1017290,0.86,0.813,0.8616,27,test
+cnn_full_clip,407883,0.83,,0.8265,23,test

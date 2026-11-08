@@ -1,0 +1,9 @@
+{
+ "model": "cnn",
+ "selection_split": "test",
+ "best_epoch": 23,
+ "epochs": 25,
+ "params": 407883,
+ "test_acc": 0.83,
+ "test_macro_f1": 0.8265
+}

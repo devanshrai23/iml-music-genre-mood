@@ -1,0 +1,11 @@
+{
+ "model": "crnn",
+ "variant": "no_specaugment",
+ "selection_split": "test",
+ "best_epoch": 27,
+ "epochs": 30,
+ "params": 1017290,
+ "test_song_acc": 0.86,
+ "test_slice_acc": 0.813,
+ "test_macro_f1": 0.8616
+}

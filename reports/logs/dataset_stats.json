@@ -1,0 +1,49 @@
+{
+ "gtzan": {
+  "genres": [
+   "blues",
+   "classical",
+   "country",
+   "disco",
+   "hiphop",
+   "jazz",
+   "metal",
+   "pop",
+   "reggae",
+   "rock"
+  ],
+  "clips_per_genre": {
+   "blues": 100,
+   "classical": 100,
+   "country": 100,
+   "disco": 100,
+   "hiphop": 100,
+   "jazz": 99,
+   "metal": 100,
+   "pop": 100,
+   "reggae": 100,
+   "rock": 100
+  },
+  "total_clips": 999,
+  "sample_rate": 22050,
+  "n_mels": 128,
+  "hop_length": 512
+ },
+ "spotify": {
+  "raw_rows": 114000,
+  "unique_tracks": 89741,
+  "genres": 113,
+  "mood_counts": {
+   "happy": 33221,
+   "tense": 30211,
+   "sad": 19030,
+   "calm": 7279
+  },
+  "mood_share": {
+   "happy": 0.3702,
+   "tense": 0.3366,
+   "sad": 0.2121,
+   "calm": 0.0811
+  }
+ }
+}
