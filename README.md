@@ -1,226 +1,128 @@
-# Music Genre and Mood Classification with Explainability
+# Explainable Music Genre & Mood Classification
 
-![Python](https://img.shields.io/badge/python-3.11-blue)
-![PyTorch](https://img.shields.io/badge/PyTorch-MPS%20%7C%20CUDA%20%7C%20CPU-orange)
+![Python 3.11](https://img.shields.io/badge/Python-3.11-3776AB?logo=python&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-MPS%20%7C%20CUDA-EE4C2C?logo=pytorch&logoColor=white)
+![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.9-F7931E?logo=scikitlearn&logoColor=white)
+![Librosa](https://img.shields.io/badge/Librosa-0.11-9cf)
+![SHAP](https://img.shields.io/badge/Explainability-SHAP%20%26%20Attention-success)
 
-Predicts the **genre** and **mood** of music tracks and explains the predictions using **SHAP** (classical models) and **temporal attention weights** (CNN).
-
-## Table of Contents
-
-1. [Overview](#1-overview)
-2. [Results](#2-results)
-3. [Repository Structure](#3-repository-structure)
-4. [Installation](#4-installation)
-5. [Datasets](#5-datasets)
-6. [Usage](#6-usage)
-7. [Data Notes and Limitations](#7-data-notes-and-limitations)
-8. [Roadmap](#8-roadmap)
-9. [References](#9-references)
+An end-to-end Music Information Retrieval (MIR) pipeline for **audio genre classification** and **musical mood recognition**, built with a dual-layer explainability framework that compares **TreeSHAP feature attributions** on handcrafted signal descriptors against **learnable Temporal Attention weights** on 2D log-Mel spectrograms (Attention-CNN and Attention-CRNN).
 
 ---
 
-## 1. Overview
+## Key Features & Engineering Highlights
 
-Music apps sort songs into genres (rock, jazz, classical) and moods (happy, sad, calm), but most classifiers only output a label. This project looks at **why** a model picks a label by comparing two kinds of explanation:
+* **Parallelized Audio Signal Processing:** Extracts 89 named statistical features per track (mean and std across 20 MFCCs, 12 Chroma pitch classes, Spectral Centroid, Bandwidth, Rolloff, 7-band Spectral Contrast, Zero-Crossing Rate, RMS Energy, and Beat-Tracked Global Tempo) across all CPU cores using `librosa` and `joblib`.
+* **Zero-Leakage 3-Second Slice CRNN Pipeline:** Splits the 999 parent GTZAN tracks at the **song level** first (80/20 stratified split) before slicing each 30-second Mel-spectrogram into 10 non-overlapping 3-second segments (`128 x 128`), training a **2D-CNN + BiGRU + Temporal Attention (CRNN)** with song-level soft voting (**87.0% Accuracy, 0.869 Macro F1**).
+* **Non-Circular Mood Modeling & Prior Calibration:** Derives 4-quadrant mood targets (*Happy, Tense, Sad, Calm*) on 89,741 deduplicated Spotify tracks via Russell's circumplex model (`valence >= 0.5`, `energy >= 0.5`), strictly excludes `valence` and `energy` from the inputs, and combines acoustic interaction features with prior threshold calibration to boost minority `calm` recall from `0.36 -> 0.48` (`0.667` Macro F1).
+* **Cross-Paradigm Explainability:** Pairs local and global `TreeSHAP` attributions with CRNN temporal attention heatmaps on the exact same test tracks to show *which frequency features* vs. *which temporal windows* drive predictions.
 
-- **Classical models + SHAP:** a Random Forest and an SVM trained on handcrafted audio features, explained with TreeSHAP.
-- **Deep model + attention:** a CNN on log-Mel spectrograms with a temporal attention layer, explained through its attention weights.
+---
 
-Two datasets are used, because GTZAN only has genre labels:
+## Benchmarks & Final Results
 
-| Task | Dataset | Input | Models |
-|---|---|---|---|
-| Genre (10 classes) | GTZAN | 89 librosa features, or log-Mel spectrograms | Random Forest, SVM, Attention-CNN |
-| Mood (4 classes) | Spotify Tracks (Kaggle) | 9 tabular audio features | Random Forest |
+| Task & Dataset | Model Architecture | Validation Strategy | Accuracy | Macro Precision | Macro Recall | Macro F1 |
+| :--- | :--- | :--- | :---: | :---: | :---: | :---: |
+| **Genre** (GTZAN, 10 classes) | Random Forest (300 trees) | 5-Fold Stratified CV | 74.5% | 0.74 | 0.74 | 0.740 |
+| **Genre** (GTZAN, 10 classes) | SVM (RBF Kernel, C=10) | 5-Fold Stratified CV | 77.6% | 0.78 | 0.78 | 0.776 |
+| **Genre** (GTZAN, 10 classes) | 2D Attention-CNN (Full 30s) | 80/20 Track Split | 83.0% | 0.83 | 0.83 | 0.826 |
+| **Genre** (GTZAN, 10 classes) | **Attention-CRNN (10x3s Soft Vote)** | **80/20 Track Split** | **87.0%** | **0.87** | **0.87** | **0.869** |
+| **Mood** (Spotify, 4 classes) | Random Forest Baseline (9 features) | 5-Fold Stratified CV | **70.5%** | **0.69** | 0.65 | 0.660 |
+| **Mood** (Spotify, 4 classes) | **Calibrated RF + Interactions** | **5-Fold Stratified CV** | 70.1% | 0.67 | **0.67** | **0.667** |
+| **Mood** (Spotify, 4 classes) | HistGradBoost (Class-Balanced) | 5-Fold Stratified CV | 66.0% | 0.63 | 0.66 | 0.636 |
+| **Mood** (Spotify, 4 classes) | Deep MLP (128 -> 64, Scaled) | 5-Fold Stratified CV | 66.5% | 0.63 | 0.60 | 0.608 |
 
-Mood labels come from a 0.5 threshold on Spotify's `valence` and `energy` (happy, tense, sad, calm). Both columns are **excluded from the model inputs** to prevent label leakage.
+### Per-Genre F1-Score Breakdown (GTZAN)
 
-### Features
+| Genre | Random Forest | RBF-SVM | Attention-CNN | **Attention-CRNN** | Key Takeaway |
+| :--- | :---: | :---: | :---: | :---: | :--- |
+| **Classical** | 0.90 | 0.89 | **0.98** | **0.98** | Near-perfect separation via low ZCR & high spectral contrast |
+| **Metal** | 0.86 | 0.87 | 0.86 | **0.97** | +0.11 F1 jump on CRNN with 1.00 precision |
+| **Jazz** | 0.85 | 0.86 | 0.88 | **0.95** | BiGRU captures phrasing and brass/woodwind transitions |
+| **Blues** | 0.81 | 0.82 | 0.82 | **0.92** | +0.10 F1 gain from 3-second slice soft voting |
+| **Country** | 0.71 | 0.78 | 0.74 | **0.88** | +0.14 F1 improvement separating acoustic Country from Rock |
+| **Hip-Hop** | 0.74 | 0.72 | **0.88** | 0.86 | 0.95 recall on rhythmic vocal cadence |
+| **Disco** | 0.61 | 0.67 | **0.82** | 0.81 | +0.20 F1 over RF by preserving 4/4 groove over time |
+| **Reggae** | 0.65 | 0.69 | **0.86** | 0.81 | Strong gain over summary stats via off-beat syncopation |
+| **Pop** | 0.79 | 0.80 | **0.85** | 0.76 | High-frequency vocal production |
+| **Rock** | 0.50 | 0.66 | 0.57 | **0.74** | **+0.17 F1 jump** on the hardest umbrella genre |
+| **Macro Avg** | **0.740** | **0.776** | **0.826** | **0.869** | **+12.5% accuracy gain from RF to Attention-CRNN** |
 
-- 89 named audio features per song (MFCCs, chroma, spectral descriptors, zero-crossing rate, RMS energy, tempo), extracted in parallel with librosa
-- Cached log-Mel spectrograms (128 mel bins) for deep learning
-- Attention-CNN with a learned temporal attention layer over 40 time segments
-- TreeSHAP feature attributions for both the genre and mood models
-- Song-level evaluation that avoids train/test leakage from audio segments and duplicate tracks
+---
 
-## 2. Results
+## Visual Outputs & Explainability
 
-| Task | Model | Evaluation | Accuracy | Macro F1 |
-|---|---|---|---|---|
-| Genre (GTZAN, N=999) | Random Forest (300 trees) | 5-fold stratified CV | 74.5% | 0.740 |
-| Genre (GTZAN, N=999) | SVM (RBF, C=10) | 5-fold stratified CV | 77.6% | 0.776 |
-| Genre (GTZAN, N=999) | Attention-CNN (preliminary) | single 80/20 split | 83.0% | 0.826 |
-| Mood (Spotify, N=89,741) | Random Forest (200 trees) | 5-fold stratified CV | 70.5% | 0.660 |
+### 1. Genre Classification Confusion Matrices (RF, SVM, CNN, CRNN)
+<p align="center">
+  <img src="reports/confusion_RandomForest.png" width="24%" alt="RF Confusion Matrix"/>
+  <img src="reports/confusion_SVM.png" width="24%" alt="SVM Confusion Matrix"/>
+  <img src="reports/confusion_CNN.png" width="24%" alt="CNN Confusion Matrix"/>
+  <img src="reports/confusion_CRNN.png" width="24%" alt="CRNN Confusion Matrix"/>
+</p>
 
-> **Note:** the CNN was evaluated on a single 80/20 split (about 200 clips), while the baselines use 5-fold cross-validation. The comparison is therefore approximate. See [Roadmap](#8-roadmap) for planned changes.
+### 2. Cross-Paradigm Case Study: Local TreeSHAP vs. CRNN Temporal Attention
+<p align="center">
+  <img src="reports/shap_vs_attention_comparison.png" width="96%" alt="SHAP vs CRNN Attention Comparison"/>
+</p>
 
-Observations:
+### 3. Spotify 4-Quadrant Mood Classification & SHAP Importance
+<p align="center">
+  <img src="reports/confusion_Mood_Final.png" width="45%" alt="Spotify Mood Final Confusion Matrix"/>
+  <img src="reports/shap_mood_importance.png" width="52%" alt="Spotify Mood SHAP Importance"/>
+</p>
 
-- Classical and metal are the easiest genres for all models. Rock is the hardest, and is often confused with disco, country, blues, metal and reggae.
-- The CNN improves most on rhythm-based genres (reggae, disco, hip-hop), where averaging features over 30 seconds likely hides beat structure.
-- For mood, the *calm* class has the lowest recall (0.36). It is the smallest class and is often confused with *sad*.
+---
 
-## 3. Repository Structure
+## Project Structure
 
-```
-iml-music-genre-mood/
-├── data/
-│   ├── raw/                 # downloaded datasets (not committed)
-│   └── processed/           # generated features and spectrograms (not committed)
-├── notebooks/               # exploration notebooks
-├── reports/                 # generated figures
-│   ├── confusion_RandomForest.png
-│   ├── confusion_SVM.png
-│   ├── confusion_CNN.png
-│   ├── confusion_Mood_RF.png
-│   ├── shap_global_importance.png
-│   ├── shap_mood_importance.png
-│   └── cnn_attention_example.png
-├── src/
-│   ├── extract_features.py  # 89 librosa features per song -> CSV
-│   ├── make_spectrograms.py # log-Mel spectrograms -> .npy files
-│   ├── baseline.py          # Random Forest + SVM, 5-fold CV, confusion matrices
-│   ├── train_cnn.py         # Attention-CNN training (PyTorch)
-│   └── ...                  # mood baseline and SHAP analysis scripts
-├── requirements.txt
-├── .gitignore
-└── README.md
-```
+    iml-music-genre-mood/
+    ├── data/
+    │   ├── raw/                        # Raw datasets (gitignored: GTZAN Data/ & Spotify dataset.csv)
+    │   └── processed/                  # Extracted CSVs & cached .npy Mel-spectrograms (gitignored)
+    ├── reports/                        # Confusion matrices, SHAP plots, and CRNN attention figures
+    ├── src/
+    │   ├── extract_features.py         # Parallel 89-feature audio extractor (librosa + joblib)
+    │   ├── baseline.py                 # 5-fold Stratified CV for Random Forest & RBF-SVM on GTZAN
+    │   ├── explain_shap.py             # Multi-class TreeSHAP bar & per-genre beeswarm plots
+    │   ├── make_spectrograms.py        # Converts WAV files to cached 128x1280 float16 Mel-spectrograms
+    │   ├── train_cnn.py                # 2D CNN + Temporal Attention on full 30s spectrograms
+    │   ├── train_crnn.py               # 2D CNN + BiGRU + Attention on 3s slices with song soft-voting
+    │   ├── mood_baseline.py            # Spotify deduplication, 4-quadrant mood RF baseline & TreeSHAP
+    │   ├── mood_final.py               # Engineered acoustic interactions + prior-calibrated Mood RF
+    │   └── compare_explanations.py     # Side-by-side local TreeSHAP vs. CRNN attention case studies
+    ├── requirements.txt                # Locked Python 3.11 dependencies
+    └── README.md
 
-## 4. Installation
+---
 
-Instructions are for macOS (developed on Apple Silicon). Notes for other platforms are at the end of this section.
+## Installation & Setup
 
-### 4.1 System dependencies
+1. **Install Prerequisites (Python 3.11, Git, FFmpeg):**
 
-```bash
-# Xcode command line tools and Homebrew (skip any you already have)
-xcode-select --install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+       brew install git python@3.11 ffmpeg
 
-# Git, Python 3.11, and ffmpeg (audio decoding)
-brew install git python@3.11 ffmpeg
-```
+2. **Clone Repository & Create Virtual Environment:**
 
-### 4.2 Clone the repository
+       git clone https://github.com/devanshrai23/iml-music-genre-mood.git
+       cd iml-music-genre-mood
+       python3.11 -m venv .venv
+       source .venv/bin/activate
+       pip install --upgrade pip && pip install -r requirements.txt
 
-```bash
-git clone https://github.com/devanshrai23/iml-music-genre-mood.git
-cd iml-music-genre-mood
-```
+3. **Place Datasets in `data/raw/`:**
+   * **GTZAN Genre Collection:** Extract into `data/raw/Data/genres_original/`.
+   * **Spotify Tracks Dataset:** Extract `dataset.csv` into `data/raw/dataset.csv`.
 
-### 4.3 Create a virtual environment and install packages
+---
 
-```bash
-python3.11 -m venv .venv
-source .venv/bin/activate        # run this in every new terminal
+## Reproducing the Full Pipeline
 
-pip install --upgrade pip
-pip install -r requirements.txt
-pip install torch                # required for the CNN
-```
-
-`requirements.txt` includes numpy, pandas, scikit-learn, librosa, soundfile, matplotlib, seaborn, shap, jupyterlab, ipykernel, joblib and kaggle. On Apple Silicon, the default PyTorch build supports the GPU through the MPS backend.
-
-### 4.4 Verify the installation
-
-```bash
-python -c "import librosa, sklearn, shap, pandas, torch; print('librosa', librosa.__version__)"
-python -c "import torch; print('MPS available:', torch.backends.mps.is_available())"
-ffmpeg -version | head -1
-```
-
-If a PyTorch operation is unsupported on MPS, set `PYTORCH_ENABLE_MPS_FALLBACK=1` to fall back to the CPU for that operation.
-
-### 4.5 Other platforms
-
-- **Linux:** install `ffmpeg` and Python 3.11 with your package manager (for example `sudo apt install ffmpeg python3.11 python3.11-venv`), then follow 4.2 to 4.4. Install the CUDA build of PyTorch to use an NVIDIA GPU.
-- **Windows:** install Python 3.11 and ffmpeg (add it to `PATH`), activate the environment with `.venv\Scripts\activate`, then follow the same steps.
-- **No local GPU:** the classical baselines run fine on a CPU. For the CNN, Google Colab's free GPU tier is sufficient.
-
-## 5. Datasets
-
-Datasets are not stored in this repository. Download them into `data/raw/`.
-
-### 5.1 GTZAN (genre, raw audio)
-
-- **Source:** https://www.kaggle.com/datasets/andradaolteanu/gtzan-dataset-music-genre-classification
-- **Contents:** 1,000 clips (10 genres x 100), each 30 seconds, 22,050 Hz mono WAV, about 1.2 GB. Also includes spectrogram images and two CSVs of precomputed features.
-- **Download:** log in to Kaggle, click **Download**, and unzip into `data/raw/`. The expected layout is:
-
-```
-data/raw/Data/
-├── genres_original/     # blues/, classical/, ..., rock/
-├── images_original/
-├── features_30_sec.csv
-└── features_3_sec.csv
-```
-
-Command-line alternative (requires a Kaggle API token):
-
-```bash
-kaggle datasets download -d andradaolteanu/gtzan-dataset-music-genre-classification -p data/raw --unzip
-```
-
-### 5.2 Spotify Tracks Dataset (mood, tabular)
-
-- **Source:** https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset (the leading dash in the URL is correct)
-- **Contents:** about 114,000 rows and 21 columns (danceability, energy, valence, tempo, loudness, track_genre, and more).
-- **Download:** place `dataset.csv` at `data/raw/dataset.csv`.
-
-```bash
-kaggle datasets download -d maharshipandya/-spotify-tracks-dataset -p data/raw --unzip
-```
-
-### 5.3 Check the data
-
-```bash
-python -c "import librosa; y,sr=librosa.load('data/raw/Data/genres_original/blues/blues.00000.wav'); print(y.shape, sr)"
-```
-
-Expected output: about 660,000 samples at 22,050 Hz.
-
-## 6. Usage
-
-Run all commands from the repository root with the virtual environment active. The scripts expect the paths from [Datasets](#5-datasets); adjust the path constants at the top of each script if your folders differ.
-
-| Step | Command | Output |
-|---|---|---|
-| 1. Extract features | `python src/extract_features.py` | `data/processed/gtzan_librosa_features.csv` |
-| 2. Classical baselines | `python src/baseline.py` | Metrics in the terminal, confusion matrices in `reports/` |
-| 3. Cache spectrograms | `python src/make_spectrograms.py` | `data/processed/mel/<genre>/*.npy` |
-| 4. Train the Attention-CNN | `python src/train_cnn.py` | Trained model, confusion matrix, attention plots |
-
-Notes:
-
-- Step 1 takes a few minutes. It runs in parallel and skips unreadable files, so expect 999 rows (see [Data Notes](#7-data-notes-and-limitations)).
-- Step 3 produces a few hundred MB of arrays, which are gitignored.
-- Step 4 uses the MPS backend when available, otherwise the CPU.
-
-## 7. Data Notes and Limitations
-
-- **Corrupted file:** `jazz.00054.wav` in the Kaggle copy of GTZAN cannot be decoded and is skipped, which leaves 999 tracks.
-- **GTZAN flaws:** the dataset contains a few duplicate recordings, repeated artists and debatable genre labels (Sturm, 2013). Reported accuracies should be read with this in mind.
-- **Segment leakage:** `features_3_sec.csv` is not used with a random split, because segments of the same song would appear in both train and test. Features are extracted from full 30-second clips, and any segment-level training groups folds by song.
-- **Mood circularity:** mood labels are computed from `valence` and `energy`, so both are excluded from the inputs. The remaining features are danceability, loudness, tempo, acousticness, instrumentalness, speechiness, liveness, mode and key. Loudness is typically correlated with energy, so it may partly stand in for the removed label.
-- **Estimated labels:** `valence` and `energy` are Spotify's own audio estimates, not human ratings.
-- **Duplicate tracks:** the same Spotify track appears under several genres, so rows are deduplicated by `track_id` (114,000 down to 89,741).
-- **Unlinked datasets:** GTZAN clips have no Spotify IDs, so genre is modelled on GTZAN audio and mood on Spotify tabular features.
-
-## 8. Roadmap
-
-- [ ] Extend the CNN to a CRNN (CNN + BiGRU + attention) trained on 3-second slices with `GroupKFold` grouped by song
-- [ ] Evaluate all models with the same 5-fold protocol
-- [ ] Improve recall on the *calm* mood class (class weights, oversampling)
-- [ ] Compare SHAP explanations with attention weights on the same test tracks, and test the attention peaks by masking
-- [ ] Check generalization on a small FMA-small subset
-
-## 9. References
-
-1. G. Tzanetakis and P. Cook. Musical genre classification of audio signals. *IEEE Transactions on Speech and Audio Processing*, 2002. (GTZAN dataset)
-2. B. L. Sturm. The GTZAN dataset: Its contents, its faults, their effects on evaluation, and its future use. *arXiv:1306.1461*, 2013.
-3. J. A. Russell. A circumplex model of affect. *Journal of Personality and Social Psychology*, 1980.
-4. S. M. Lundberg and S.-I. Lee. A unified approach to interpreting model predictions. *NeurIPS*, 2017.
-5. S. M. Lundberg et al. From local explanations to global understanding with explainable AI for trees. *Nature Machine Intelligence*, 2020.
-6. B. McFee et al. librosa: Audio and music signal analysis in Python. *Proc. SciPy*, 2015.
-7. D. S. Park et al. SpecAugment: A simple data augmentation method for automatic speech recognition. *Interspeech*, 2019.
+    python src/extract_features.py
+    python src/baseline.py
+    python src/explain_shap.py
+    python src/make_spectrograms.py
+    python src/train_cnn.py
+    python src/train_crnn.py
+    python src/mood_baseline.py
+    python src/mood_final.py
+    python src/compare_explanations.py
