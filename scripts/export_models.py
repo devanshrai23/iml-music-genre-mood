@@ -25,6 +25,7 @@ from pathlib import Path
 warnings.filterwarnings("ignore")
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+import musicml  # noqa: E402,F401  (Apple Silicon threading guards; keep first)
 
 import joblib  # noqa: E402
 import numpy as np  # noqa: E402

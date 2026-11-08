@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
+import musicml  # noqa: E402,F401  (Apple Silicon threading guards; keep first)
 
 import numpy as np  # noqa: E402
 import soundfile as sf  # noqa: E402
