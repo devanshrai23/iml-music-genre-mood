@@ -88,6 +88,13 @@ tr.best td { font-weight: 700; }
 .kpi b { font-family: var(--display); font-size: 2rem; line-height: 1; font-variant-numeric: tabular-nums; }
 .kpi span { color: var(--muted); font-size: 0.85rem; }
 
+.split { display: grid; gap: 20px; align-items: start; }
+.split-a { grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); }
+.split-b { grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); }
+.split-mood { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr) minmax(0, 1fr); }
+@media (max-width: 900px) { .split-a, .split-b, .split-mood { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .slider { grid-template-columns: 110px 1fr 52px; } .shap-row { grid-template-columns: minmax(100px, 130px) 1fr 58px; } }
+
 /* ---------- probability bars */
 .bars { display: flex; flex-direction: column; gap: 5px; }
 .bar { display: grid; grid-template-columns: 78px 1fr 44px; gap: 8px; align-items: center; font-size: 0.85rem; }

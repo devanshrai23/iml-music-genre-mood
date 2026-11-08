@@ -20,7 +20,7 @@ export default function SpectrogramView({ analysis, time, onSeek, showAttention 
   }
   const max = Math.max(...curve, 1e-9);
   const n = curve.length;
-  const pts = curve.map((v, i) => `${((i + 0.5) / n) * 1000},${100 - (v / max) * 82}`);
+  const pts = curve.map((v, i) => `${((i + 0.5) / n) * 1000},${100 - (v / max) * 58}`);
   const path = n ? `M0,100 L${pts.join(" L")} L1000,100 Z` : "";
   const line = n ? `M${pts.join(" L")}` : "";
   const sliceCount = 10;
@@ -40,7 +40,7 @@ export default function SpectrogramView({ analysis, time, onSeek, showAttention 
           <line key={i} x1={((i + 1) / sliceCount) * 1000} x2={((i + 1) / sliceCount) * 1000} y1={0} y2={100}
                 stroke="rgba(255,255,255,0.28)" strokeWidth={1} strokeDasharray="2 3" vectorEffect="non-scaling-stroke" />
         ))}
-        {n > 0 && <path d={path} fill="rgba(120,255,214,0.20)" />}
+        {n > 0 && <path d={path} fill="rgba(120,255,214,0.14)" />}
         {n > 0 && <path d={line} fill="none" stroke="#78ffd6" strokeWidth={2} vectorEffect="non-scaling-stroke" />}
       </svg>
       <div className="playhead" style={{ left: `${Math.min(100, (time / span) * 100)}%` }} />

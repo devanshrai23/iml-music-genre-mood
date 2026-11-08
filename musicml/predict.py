@@ -48,14 +48,20 @@ class GenrePredictor:
     # ----------------------------------------------------------------- loading
     def _load(self):
         import joblib
-        import torch
-        from .models import AttentionCRNN, AudioAttentionCNN
 
-        torch.set_num_threads(max(1, min(4, os.cpu_count() or 1)))
-        self.torch = torch
-        self.device = torch.device(os.environ.get("MUSICML_DEVICE", "cpu"))
+        self.torch = None
+        if (self.dir / "crnn.pt").exists() or (self.dir / "cnn.pt").exists():
+            import torch
+            from .models import AttentionCRNN, AudioAttentionCNN
 
-        for name, cls, attr in [("crnn.pt", AttentionCRNN, "crnn"), ("cnn.pt", AudioAttentionCNN, "cnn")]:
+            torch.set_num_threads(max(1, min(4, os.cpu_count() or 1)))
+            self.torch = torch
+            self.device = torch.device(os.environ.get("MUSICML_DEVICE", "cpu"))
+            nets = [("crnn.pt", AttentionCRNN, "crnn"), ("cnn.pt", AudioAttentionCNN, "cnn")]
+        else:
+            nets = []
+
+        for name, cls, attr in nets:
             p = self.dir / name
             if p.exists():
                 m = cls(num_classes=len(self.genres))
@@ -81,7 +87,6 @@ class GenrePredictor:
 
     def analyze(self, y, info=None, title=None, true_label=None):
         t0 = time.perf_counter()
-        torch = self.torch
         mel = mel_db(y)
         out = {
             "title": title,
@@ -94,22 +99,8 @@ class GenrePredictor:
             "models": {},
         }
 
-        with torch.no_grad():
-            if self.crnn is not None:
-                logits, alpha = self.crnn(torch.from_numpy(crnn_input(mel)).to(self.device))
-                probs = torch.softmax(logits, dim=-1).cpu().numpy()            # (10, C)
-                mean = probs.mean(axis=0)
-                out["models"]["crnn"] = {
-                    "probs": _r(mean),
-                    "pred": self.genres[int(mean.argmax())],
-                    "slices": [{"probs": _r(p, 3), "pred": self.genres[int(p.argmax())]} for p in probs],
-                    "attention": [_r(a, 4) for a in alpha.cpu().numpy()],     # (10, 16)
-                }
-            if self.cnn is not None:
-                logits, attn = self.cnn(torch.from_numpy(cnn_input(mel)).to(self.device))
-                p = torch.softmax(logits, dim=-1).cpu().numpy()[0]
-                out["models"]["cnn"] = {"probs": _r(p), "pred": self.genres[int(p.argmax())],
-                                        "attention": _r(attn.cpu().numpy()[0])}  # (40,)
+        if self.torch is not None:
+            self._run_nets(mel, out)
 
         if self.rf is not None or self.svm is not None:
             feats = extract_features(y)
@@ -127,6 +118,25 @@ class GenrePredictor:
 
         out["elapsed_ms"] = int((time.perf_counter() - t0) * 1000)
         return out
+
+    def _run_nets(self, mel, out):
+        torch = self.torch
+        with torch.no_grad():
+            if self.crnn is not None:
+                logits, alpha = self.crnn(torch.from_numpy(crnn_input(mel)).to(self.device))
+                probs = torch.softmax(logits, dim=-1).cpu().numpy()            # (10, C)
+                mean = probs.mean(axis=0)
+                out["models"]["crnn"] = {
+                    "probs": _r(mean),
+                    "pred": self.genres[int(mean.argmax())],
+                    "slices": [{"probs": _r(p, 3), "pred": self.genres[int(p.argmax())]} for p in probs],
+                    "attention": [_r(a, 4) for a in alpha.cpu().numpy()],     # (10, 16)
+                }
+            if self.cnn is not None:
+                logits, attn = self.cnn(torch.from_numpy(cnn_input(mel)).to(self.device))
+                p = torch.softmax(logits, dim=-1).cpu().numpy()[0]
+                out["models"]["cnn"] = {"probs": _r(p), "pred": self.genres[int(p.argmax())],
+                                        "attention": _r(attn.cpu().numpy()[0])}  # (40,)
 
     def _explain(self, X, names):
         sv, base = _shap_per_class(self.explainer, X)                # (F, C), (C,)

@@ -91,7 +91,7 @@ export default function Results() {
           </div>
         </div>
         {m ? (
-          <div className="grid-2" style={{ gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)" }}>
+          <div className="split split-b">
             <ConfusionMatrix labels={genres} matrix={m.confusion} selected={cell} onSelect={setCell} />
             <div className="stack">
               <div className="row" style={{ gap: 24 }}>

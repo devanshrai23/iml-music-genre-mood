@@ -15,3 +15,5 @@ __pycache__/
 !models/*.pt
 web/node_modules/
 web/dist/
+# The mood RF can be tens of MB; keep it local (only the live backend needs it)
+models/mood_rf.joblib

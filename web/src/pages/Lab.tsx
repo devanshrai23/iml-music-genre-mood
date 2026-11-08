@@ -43,7 +43,7 @@ export default function Lab() {
       </header>
       <ShowcaseBanner feature="uploading your own audio" />
 
-      <section className="grid-2" style={{ gridTemplateColumns: "minmax(0, 1fr) minmax(0, 1.6fr)" }}>
+      <section className="split split-a">
         <div className={`drop ${over ? "over" : ""}`}
              onDragOver={(e) => { e.preventDefault(); if (live) setOver(true); }}
              onDragLeave={() => setOver(false)}

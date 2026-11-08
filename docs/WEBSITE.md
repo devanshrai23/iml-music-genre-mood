@@ -29,7 +29,7 @@ This runs any missing pipeline step for you (`extract_features.py`, `make_spectr
 
 - `crnn.pt`, `cnn.pt`: the trained networks
 - `rf.joblib`, `svm.joblib`: baselines fitted on the same song-level 80/20 split as the CRNN
-- `mood_rf.joblib`: calibrated mood Random Forest
+- `mood_rf.joblib`: calibrated mood Random Forest (gitignored because it can be large; only the live backend needs it)
 - `metadata.json`: test-split metrics, confusion matrices, global SHAP, mood presets
 
 It prints each model's test accuracy, measured through `musicml/`. The CRNN should land near the README's 87%.
@@ -77,3 +77,13 @@ Docker Space) and set `VITE_API_URL` in the Vercel project settings.
 - [ ] `python -m api` is running and the top bar says **live models**
 - [ ] One MP3 of your own ready to upload (a well-known song works best)
 - [ ] Walkthrough: Overview → Genre Lab (play a "rescue" sample, click slices) → upload a song → Why this genre? → Results (click a rock/country cell) → Mood (pick an example, drag a slider)
+
+## Share with the team
+
+After steps 2 and 3, commit the results so teammates and Vercel get them without retraining:
+
+```bash
+git add models/ web/public/data web/public/samples
+git commit -m "Add exported models and demo samples"
+git push
+```

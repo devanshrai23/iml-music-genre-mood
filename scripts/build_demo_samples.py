@@ -28,7 +28,7 @@ def write_audio(y, dest_stem):
     """Write a compressed copy of the clip; MP3 when libsndfile supports it, else WAV."""
     for ext, fmt, sub in [("mp3", "MP3", "MPEG_LAYER_III"), ("wav", "WAV", "PCM_16")]:
         try:
-            path = dest_stem.with_suffix("." + ext)
+            path = dest_stem.parent / f"{dest_stem.name}.{ext}"
             sf.write(path, y.astype(np.float32), SR, format=fmt, subtype=sub)
             return path.name
         except Exception:
@@ -38,14 +38,16 @@ def write_audio(y, dest_stem):
 
 def pick_tracks(meta, per_genre):
     tracks = meta.get("test_tracks", [])
+    have = {k for t in tracks for k in t["preds"]}
+    main = next((k for k in ("crnn", "cnn", "svm", "rf") if k in have), None)
     chosen = []
     for g in meta["genres"]:
         pool = [t for t in tracks if t["label"] == g]
-        # 1) a song where RF fails but the CRNN succeeds (the interesting case), 2) clean CRNN hits
-        rescue = [t for t in pool if t["preds"].get("crnn") == g and t["preds"].get("rf") not in (None, g)]
-        hits = [t for t in pool if t["preds"].get("crnn") == g and t not in rescue]
-        misses = [t for t in pool if t["preds"].get("crnn") not in (None, g)]
-        picks = (rescue[:1] + hits)[:per_genre]
+        # 1) a song where RF fails but the CRNN succeeds (the interesting case), 2) clean hits
+        rescue = [t for t in pool if main != "rf" and t["preds"].get(main) == g and t["preds"].get("rf") not in (None, g)]
+        hits = [t for t in pool if t["preds"].get(main) == g and t not in rescue]
+        misses = [t for t in pool if t["preds"].get(main) not in (None, g)]
+        picks = (rescue[:1] + hits + misses)[:per_genre]
         if misses and per_genre >= 3:
             picks = picks[: per_genre - 1] + misses[:1]
         chosen += [(t, "rescue" if t in rescue else ("miss" if t in misses else "hit")) for t in picks]

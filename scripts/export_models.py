@@ -96,9 +96,7 @@ def song_split():
 
 
 def export_genre(meta):
-    import torch
     from musicml.audio import cnn_input, crnn_input
-    from musicml.models import AttentionCRNN, AudioAttentionCNN
 
     step("Building the song-level 80/20 split")
     genres, paths, labels, tr, te = song_split()
@@ -143,13 +141,16 @@ def export_genre(meta):
                          for i in np.argsort(-mean_abs[:, ci])[:10]] for ci, c in enumerate(rf_classes)},
     }
 
-    for pt, out, cls, prep, key in [
-        ("best_crnn.pt", "crnn.pt", AttentionCRNN, crnn_input, "crnn"),
-        ("best_cnn_model.pt", "cnn.pt", AudioAttentionCNN, cnn_input, "cnn"),
+    for pt, out, cls_name, prep, key in [
+        ("best_crnn.pt", "crnn.pt", "AttentionCRNN", crnn_input, "crnn"),
+        ("best_cnn_model.pt", "cnn.pt", "AudioAttentionCNN", cnn_input, "cnn"),
     ]:
         src = REPORTS / pt
         if not src.exists():
             continue
+        import torch
+        from musicml import models as nets
+        cls = getattr(nets, cls_name)
         step(f"Copying {pt} -> models/{out} and re-checking it on the test split")
         shutil.copy(src, MODELS_DIR / out)
         model = cls(num_classes=len(genres))

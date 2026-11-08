@@ -88,7 +88,7 @@ export default function Mood() {
         <div className="panel"><div className="kpi"><b>0.36 → 0.48</b><span>calm recall after the 1.45× prior boost</span></div></div>
       </section>
 
-      <section className="grid-3" style={{ gridTemplateColumns: "minmax(0, 0.9fr) minmax(0, 1.2fr) minmax(0, 1fr)", alignItems: "start" }}>
+      <section className="split split-mood">
         <div className="panel stack">
           <h3>Example tracks</h3>
           {presets.length ? (
