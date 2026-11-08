@@ -104,7 +104,12 @@ Full guide, development mode and Vercel deployment: [docs/WEBSITE.md](docs/WEBSI
     │   ├── mood_baseline.py            # Spotify deduplication, 4-quadrant mood RF baseline & TreeSHAP
     │   ├── mood_final.py               # Engineered acoustic interactions + prior-calibrated Mood RF
     │   └── compare_explanations.py     # Side-by-side local TreeSHAP vs. CRNN attention case studies
-    ├── requirements.txt                # Locked Python 3.11 dependencies
+    ├── api/                            # FastAPI backend serving live model & SHAP inference
+    ├── web/                            # React + TypeScript interactive demo frontend
+    ├── scripts/                        # Model export (export_models.py) & gallery builder scripts
+    ├── docs/                           # Extended documentation & deployment guide (WEBSITE.md)
+    ├── requirements.txt                # Core ML & audio signal processing dependencies
+    ├── requirements-web.txt            # FastAPI & web server dependencies
     └── README.md
 
 ---
