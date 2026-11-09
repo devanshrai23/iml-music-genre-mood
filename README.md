@@ -8,7 +8,7 @@
 
 An end-to-end Music Information Retrieval (MIR) pipeline for **audio genre classification** and **musical mood recognition**, built with a dual-layer explainability framework that compares **TreeSHAP feature attributions** on handcrafted signal descriptors against **learnable Temporal Attention weights** on 2D log-Mel spectrograms (Attention-CNN and Attention-CRNN).
 
-**Live demo (showcase mode):** https://iml-music-genre-mood.vercel.app/ · **Report:** [`report/main.pdf`](report/main.pdf) (IEEE conference format)
+**Live demo (showcase mode):** https://iml-music-genre-mood.vercel.app/
 
 Introduction to Machine Learning (IML) group project, Department of Information Technology, IIIT Allahabad.
 
@@ -165,7 +165,6 @@ The public Vercel deployment (https://iml-music-genre-mood.vercel.app/) runs in 
     ├── api/                            # FastAPI backend serving live model & SHAP inference
     ├── web/                            # React + TypeScript interactive demo frontend
     ├── scripts/                        # Model export, demo gallery, report figures & experiment runner
-    ├── report/                         # IEEE LaTeX report (main.tex, main.pdf, Overleaf zip)
     ├── docs/                           # Extended documentation & deployment guide (WEBSITE.md)
     ├── requirements.txt                # Core ML & audio signal processing dependencies
     ├── requirements-web.txt            # FastAPI & web server dependencies
